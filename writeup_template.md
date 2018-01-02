@@ -54,6 +54,8 @@ Below is an example of the window search on an image (blue boxes indicate a vehi
 
 ![sliding_window](example_images/sliding_window.png)
 
+Note there are lots of redundant boxes around car.
+
 ### Final bounding box prediction
 There are lots of boxes around the vehicle so we want to post-process the bounding boxes to remove redundant boxes. I counted the occurance for each predicted box, and then set a threshold 33, so the region with the count higher than the threhold will be kept, and the rest will be discarded. This is called heatmap method.
 
@@ -68,7 +70,7 @@ The above illustrations were based on a static image. However, in a video stream
 For the cumulative heat map, I chose a window history of 30 frames, and a heat map threshold of 30. I found these settings give a good rejection rate for false positives, while not accumulating bounding boxes over too long a time period such that the detections lag behind too much.
 
 ## Final video output
-[Here](https://youtu.be/cipgjd5fhWg) is the final video output on Youtube. The same video is 'out.mp4' in this repo. The original video is 'project_video.mp4'.
+[Here](https://youtu.be/VgFoLBVdViM) is the final video output on Youtube. The same video is 'out.mp4' in this repo. The original video is 'project_video.mp4'.
 
 ## Discussion
 The main challenge for this project was parameter tuning, mostly to reduce the number of false positives in the video. Though the test accuracy is > 99%, it does not mean it does not almost perfect in the video. There are few cars in the video, and the video was recorded in day time. So many cases are not revealved by the video. We need more test cases to improve the detector.

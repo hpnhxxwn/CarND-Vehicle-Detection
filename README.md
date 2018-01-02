@@ -69,10 +69,15 @@ The above illustrations were based on a static image. However, in a video stream
 
 For the cumulative heat map, I chose a window history of 30 frames, and a heat map threshold of 30. I found these settings give a good rejection rate for false positives, while not accumulating bounding boxes over too long a time period such that the detections lag behind too much.
 
-## Final video output
+### Final video output
 [Here](https://youtu.be/VgFoLBVdViM) is the final video output on Youtube. The same video is 'out.mp4' in this repo. The original video is 'project_video.mp4'.
 
-## Discussion
+### Discussion
 The main challenge for this project was parameter tuning, mostly to reduce the number of false positives in the video. Though the test accuracy is > 99%, it does not mean it does not almost perfect in the video. There are few cars in the video, and the video was recorded in day time. So many cases are not revealved by the video. We need more test cases to improve the detector.
 
 Another improvement that can be done is using CNN deep learning approach and YOLO. CNN has been proved very successful in computer vision. I will try this approach in the future.
+
+### Reference
+https://github.com/georgesung/vehicle_detection_hog_svm
+https://chatbotslife.com/vehicle-detection-and-tracking-using-computer-vision-baea4df65906
+http://www.learnopencv.com/histogram-of-oriented-gradients/

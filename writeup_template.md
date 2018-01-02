@@ -30,11 +30,11 @@ Below is a visualization of the HOG features on the example vehicle and non-vehi
 
 Vehicle HOG:
 
-![vehicle_hog](example_images/vehicle_hog.png)
+![vehicle_hog](output_images/vehicle_hog.png)
 
 Non-vehicle HOG:
 
-![non_vehicle_hog](example_images/non_vehicle_hog.png)
+![non_vehicle_hog](output_images/non_vehicle_hog.png)
 
 I trained a linear SVM using the HOG features and spatial features. I ended up getting rid of histogram features as I did not find them useful because they did not improve model accuracy. HOG plus spatial feature already give me 99.61% test accuracy, while HOG only gives around 98% test accuracy.
 
@@ -52,18 +52,18 @@ I chose an overlap percentage of 0.7 which gave me reliable detections with mult
 
 Below is an example of the window search on an image (blue boxes indicate a vehicle detection in that window):
 
-![sliding_window](example_images/sliding_window.png)
+![sliding_window](output_images/sliding_window.png)
 
 Note there are lots of redundant boxes around car.
 
 ### Final bounding box prediction
 There are lots of boxes around the vehicle so we want to post-process the bounding boxes to remove redundant boxes. I counted the occurance for each predicted box, and then set a threshold 33, so the region with the count higher than the threhold will be kept, and the rest will be discarded. This is called heatmap method.
 
-![heatmap](example_images/heatmap.png)
+![heatmap](output_images/heatmap.png)
 
 I use scikit-learn's `label()` function to draw the final bounding boxes based on our thresholded heat map. T
 
-![final_bbox](example_images/final_bbox.png)
+![final_bbox](output_images/final_bbox.png)
 
 The above illustrations were based on a static image. However, in a video stream, we can take advantage of the temporal correlation between video frames. I kept track of a cumulative heat map over the past 30 frames in a video, and threshold the cumulative heatmap. The cumulative heatmap is enabled by a queue of "heatmap windows", and the implementation is in the class `HMWindows()` in the file 'HMWindows.py'.
 

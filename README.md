@@ -79,5 +79,7 @@ Another improvement that can be done is using CNN deep learning approach and YOL
 
 ### Reference
 https://github.com/georgesung/vehicle_detection_hog_svm
+
 https://chatbotslife.com/vehicle-detection-and-tracking-using-computer-vision-baea4df65906
+
 http://www.learnopencv.com/histogram-of-oriented-gradients/
